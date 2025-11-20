@@ -20,15 +20,15 @@
       <DayOfMonth>1</DayOfMonth>
       <doNotWaitOnFirstExecution>N</doNotWaitOnFirstExecution>
       <hour>12</hour>
-      <intervalMinutes>15</intervalMinutes>
+      <intervalMinutes>60</intervalMinutes>
       <intervalSeconds>0</intervalSeconds>
       <minutes>0</minutes>
       <repeat>N</repeat>
-      <schedulerType>1</schedulerType>
+      <schedulerType>0</schedulerType>
       <weekDay>1</weekDay>
       <parallel>N</parallel>
-      <xloc>208</xloc>
-      <yloc>192</yloc>
+      <xloc>50</xloc>
+      <yloc>50</yloc>
       <attributes_hac/>
     </action>
     <action>
