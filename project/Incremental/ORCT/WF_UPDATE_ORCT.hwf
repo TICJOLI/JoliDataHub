@@ -42,7 +42,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/ORCT/ORCT_INC.hpl</filename>
+      <filename>${PROJECT_HOME}/Incremental/ORCT/ORCT_INC.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>
@@ -70,7 +70,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/ORCT/GET_LAST_UPDATE_PG_ORCT.hpl</filename>
+      <filename>${PROJECT_HOME}/Incremental/ORCT/GET_LAST_UPDATE_PG_ORCT.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>

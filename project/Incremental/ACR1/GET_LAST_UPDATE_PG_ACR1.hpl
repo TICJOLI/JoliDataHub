@@ -37,7 +37,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -65,7 +65,6 @@ FROM datahub."ACR1";</sql>
     </partitioning>
     <fields>
       <field>
-        <default_value/>
         <field_name>ultima_fecha</field_name>
         <variable_name>ULTIMA_FECHA</variable_name>
         <variable_type>ROOT_WORKFLOW</variable_type>

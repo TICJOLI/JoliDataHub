@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pipeline>
   <info>
-    <name>GET_LAST_UPDATE_PG_ODLN</name>
+    <name>GET_LAST_UPDATE_PG_ODLN_DLN1</name>
     <name_sync_with_filename>Y</name_sync_with_filename>
     <description/>
     <extended_description/>
@@ -42,7 +42,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -68,7 +68,7 @@ FROM datahub."DLN1";</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -81,6 +81,31 @@ FROM datahub."ODLN";</sql>
     <GUI>
       <xloc>224</xloc>
       <yloc>208</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>ULTIMA_FECHA_DLN1</name>
+    <type>SetVariable</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <field_name>ultima_fecha_dln1</field_name>
+        <variable_name>ULTIMA_FECHA_DLN1</variable_name>
+        <variable_type>ROOT_WORKFLOW</variable_type>
+      </field>
+    </fields>
+    <use_formatting>Y</use_formatting>
+    <attributes/>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>320</yloc>
     </GUI>
   </transform>
   <transform>
@@ -106,32 +131,6 @@ FROM datahub."ODLN";</sql>
     <GUI>
       <xloc>480</xloc>
       <yloc>208</yloc>
-    </GUI>
-  </transform>
-  <transform>
-    <name>ULTIMA_FECHA_DLN1</name>
-    <type>SetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <default_value/>
-        <field_name>ultima_fecha_dln1</field_name>
-        <variable_name>ULTIMA_FECHA_DLN1</variable_name>
-        <variable_type>ROOT_WORKFLOW</variable_type>
-      </field>
-    </fields>
-    <use_formatting>Y</use_formatting>
-    <attributes/>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>320</yloc>
     </GUI>
   </transform>
   <transform_error_handling>

@@ -22,12 +22,12 @@
   <order>
     <hop>
       <from>GET_ODLN</from>
-      <to>Insert / update</to>
+      <to>Insert / update ODLN</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>GET_DLN1</from>
-      <to>Insert / update 2</to>
+      <to>Insert / update DLN1</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -42,7 +42,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>SQL JOLI</connection>
+    <connection>SQL_JOLI</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT DLN1.*, ODLN.UpdateDate
@@ -68,7 +68,7 @@ ORDER BY ODLN.UpdateDate</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>SQL JOLI</connection>
+    <connection>SQL_JOLI</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT *
@@ -83,7 +83,7 @@ ORDER BY UpdateDate</sql>
     </GUI>
   </transform>
   <transform>
-    <name>Insert / update</name>
+    <name>Insert / update ODLN</name>
     <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
@@ -3878,7 +3878,7 @@ ORDER BY UpdateDate</sql>
     </GUI>
   </transform>
   <transform>
-    <name>Insert / update 2</name>
+    <name>Insert / update DLN1</name>
     <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
@@ -3889,7 +3889,7 @@ ORDER BY UpdateDate</sql>
       <schema_name/>
     </partitioning>
     <commit>2000</commit>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <lookup>
       <key>
         <condition>=</condition>

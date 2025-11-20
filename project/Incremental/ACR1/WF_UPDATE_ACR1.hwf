@@ -42,7 +42,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/ACR1/ACR1_INC.hpl</filename>
+      <filename>${PROJECT_HOME}/Incremental/ACR1/ACR1_INC.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>
@@ -70,7 +70,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/ACR1/GET_LAST_UPDATE_PG_ACR1.hpl</filename>
+      <filename>${PROJECT_HOME}/Incremental/ACR1/GET_LAST_UPDATE_PG_ACR1.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>

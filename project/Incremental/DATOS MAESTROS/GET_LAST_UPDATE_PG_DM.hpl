@@ -62,7 +62,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -88,7 +88,7 @@ FROM datahub."ITT1";</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -114,7 +114,7 @@ FROM datahub."NNM1";</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -140,7 +140,7 @@ FROM datahub."OACT";</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -166,7 +166,7 @@ FROM datahub."OCRD";</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -192,7 +192,7 @@ FROM datahub."OITM";</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(

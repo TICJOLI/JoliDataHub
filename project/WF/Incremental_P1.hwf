@@ -40,7 +40,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/DATOS MAESTROS/WF_UPDATE_DM.hwf</filename>
+      <filename>${PROJECT_HOME}/Incremental/DATOS MAESTROS/WF_UPDATE_DM.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -64,7 +66,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/ORIN/WF_UPDATE_ORIN_RIN1.hwf</filename>
+      <filename>${PROJECT_HOME}/Incremental/ORIN/WF_UPDATE_ORIN_RIN1.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -88,7 +92,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/ORDN/WF_UPDATE_ORDN_RDN1.hwf</filename>
+      <filename>${PROJECT_HOME}/Incremental/ORDN/WF_UPDATE_ORDN_RDN1.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -112,7 +118,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/ORCT/WF_UPDATE_ORCT.hwf</filename>
+      <filename>${PROJECT_HOME}/Incremental/ORCT/WF_UPDATE_ORCT.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -136,7 +144,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/ODLN/WF_UPDATE_ODLN_DLN1.hwf</filename>
+      <filename>${PROJECT_HOME}/Incremental/ODLN/WF_UPDATE_ODLN_DLN1.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -160,7 +170,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/ACR1/WF_UPDATE_ACR1.hwf</filename>
+      <filename>${PROJECT_HOME}/Incremental/ACR1/WF_UPDATE_ACR1.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
