@@ -13,25 +13,6 @@
     </parameters>
   <actions>
     <action>
-      <name>Start</name>
-      <description/>
-      <type>SPECIAL</type>
-      <attributes/>
-      <DayOfMonth>1</DayOfMonth>
-      <doNotWaitOnFirstExecution>N</doNotWaitOnFirstExecution>
-      <hour>12</hour>
-      <intervalMinutes>60</intervalMinutes>
-      <intervalSeconds>0</intervalSeconds>
-      <minutes>0</minutes>
-      <repeat>N</repeat>
-      <schedulerType>0</schedulerType>
-      <weekDay>1</weekDay>
-      <parallel>N</parallel>
-      <xloc>240</xloc>
-      <yloc>176</yloc>
-      <attributes_hac/>
-    </action>
-    <action>
       <name>OINM_INC.hpl</name>
       <description/>
       <type>PIPELINE</type>
@@ -43,8 +24,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/Incremental/OINM/OINM_INC.hpl</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -71,8 +50,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/Incremental/OINM/GET_LAST_UPDATE_PG_OINM.hpl</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -87,21 +64,40 @@
       <yloc>176</yloc>
       <attributes_hac/>
     </action>
+    <action>
+      <name>Start</name>
+      <description/>
+      <type>SPECIAL</type>
+      <attributes/>
+      <DayOfMonth>1</DayOfMonth>
+      <doNotWaitOnFirstExecution>N</doNotWaitOnFirstExecution>
+      <hour>12</hour>
+      <intervalMinutes>60</intervalMinutes>
+      <intervalSeconds>0</intervalSeconds>
+      <minutes>0</minutes>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <weekDay>1</weekDay>
+      <parallel>N</parallel>
+      <xloc>272</xloc>
+      <yloc>176</yloc>
+      <attributes_hac/>
+    </action>
   </actions>
   <hops>
-    <hop>
-      <from>Start</from>
-      <to>GET_LAST_UPDATE_PG_OINM.hpl</to>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
     <hop>
       <from>GET_LAST_UPDATE_PG_OINM.hpl</from>
       <to>OINM_INC.hpl</to>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>GET_LAST_UPDATE_PG_OINM.hpl</to>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
   </hops>
   <notepads>
