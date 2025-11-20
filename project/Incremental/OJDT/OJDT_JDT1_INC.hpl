@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline>
+  <info>
+    <name>OJDT_JDT1_INC</name>
+    <name_sync_with_filename>Y</name_sync_with_filename>
+    <description/>
+    <extended_description/>
+    <pipeline_version/>
+    <pipeline_type>Normal</pipeline_type>
+    <parameters>
+    </parameters>
+    <capture_transform_performance>N</capture_transform_performance>
+    <transform_performance_capturing_delay>1000</transform_performance_capturing_delay>
+    <transform_performance_capturing_size_limit>100</transform_performance_capturing_size_limit>
+    <created_user>-</created_user>
+    <created_date>2025/11/10 11:18:32.063</created_date>
+    <modified_user>-</modified_user>
+    <modified_date>2025/11/10 11:18:32.063</modified_date>
+  </info>
+  <notepads>
+  </notepads>
+  <order>
+    <hop>
+      <from>Delete OJDT</from>
+      <to>INSERT_OJDT</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>GET_OJDT</from>
+      <to>Select values OJDT</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values OJDT</from>
+      <to>Delete OJDT</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>GET_JDT1</from>
+      <to>Delete JDT1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Delete JDT1</from>
+      <to>Select values JDT1</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values JDT1</from>
+      <to>INSERT_JDT1</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <transform>
+    <name>Delete JDT1</name>
+    <type>Delete</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <commit>2000</commit>
+    <connection>POSTGRES CLOUD</connection>
+    <lookup>
+      <key>
+        <condition>=</condition>
+        <field>TransId</field>
+        <name>TransId_Key</name>
+      </key>
+      <key>
+        <condition>=</condition>
+        <field>Line_ID</field>
+        <name>Line_ID_Key</name>
+      </key>
+      <schema>datahub</schema>
+      <table>JDT1</table>
+    </lookup>
+    <attributes/>
+    <GUI>
+      <xloc>576</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Delete OJDT</name>
+    <type>Delete</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <commit>2000</commit>
+    <connection>POSTGRES CLOUD</connection>
+    <lookup>
+      <key>
+        <condition>=</condition>
+        <field>TransId</field>
+        <name>TransId</name>
+      </key>
+      <schema>datahub</schema>
+      <table>OJDT</table>
+    </lookup>
+    <attributes/>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>240</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>GET_JDT1</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>SQL JOLI</connection>
+    <execute_each_row>N</execute_each_row>
+    <limit>0</limit>
+    <sql>SELECT 
+    CAST(JDT1.TransId AS INT) AS TransId_Key,    -- Campo forzado a Entero para el Borrado
+    CAST(JDT1.Line_ID AS INT) AS Line_ID_Key,    -- Campo forzado a Entero para el Borrado
+    JDT1.* , 
+    OJDT.UpdateDate
+FROM JDT1
+INNER JOIN OJDT ON JDT1.Transid = OJDT.Transid
+WHERE OJDT.UpdateDate >= '${ULTIMA_FECHA_JDT1}'
+ORDER BY OJDT.UpdateDate</sql>
+    <variables_active>Y</variables_active>
+    <attributes/>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>GET_OJDT</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>SQL JOLI</connection>
+    <execute_each_row>N</execute_each_row>
+    <limit>0</limit>
+    <sql>SELECT *
+FROM OJDT
+WHERE UpdateDate >= '${ULTIMA_FECHA_OJDT}'
+ORDER BY UpdateDate</sql>
+    <variables_active>Y</variables_active>
+    <attributes/>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>240</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>INSERT_JDT1</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <commit>2000</commit>
+    <connection>POSTGRES CLOUD</connection>
+    <fields>
+</fields>
+    <ignore_errors>N</ignore_errors>
+    <only_when_have_rows>N</only_when_have_rows>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <return_keys>N</return_keys>
+    <schema>datahub</schema>
+    <specify_fields>N</specify_fields>
+    <table>JDT1</table>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_in_table>Y</tablename_in_table>
+    <truncate>N</truncate>
+    <use_batch>Y</use_batch>
+    <attributes/>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>INSERT_OJDT</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <commit>2000</commit>
+    <connection>POSTGRES CLOUD</connection>
+    <fields>
+</fields>
+    <ignore_errors>N</ignore_errors>
+    <only_when_have_rows>N</only_when_have_rows>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <return_keys>N</return_keys>
+    <schema>datahub</schema>
+    <specify_fields>N</specify_fields>
+    <table>OJDT</table>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_in_table>Y</tablename_in_table>
+    <truncate>N</truncate>
+    <use_batch>Y</use_batch>
+    <attributes/>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>240</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values OJDT</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <meta>
+        <date_format_lenient>N</date_format_lenient>
+        <length>-2</length>
+        <lenient_string_to_number>N</lenient_string_to_number>
+        <name>TransId</name>
+        <precision>0</precision>
+        <rename>TransId</rename>
+        <roundingType>half_even</roundingType>
+        <storage_type/>
+        <type>Integer</type>
+      </meta>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>592</xloc>
+      <yloc>240</yloc>
+    </GUI>
+  </transform>
+  <transform>
+    <name>Select values JDT1</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <remove>
+        <name>TransId_Key</name>
+      </remove>
+      <remove>
+        <name>Line_ID_Key</name>
+      </remove>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes/>
+    <GUI>
+      <xloc>736</xloc>
+      <yloc>368</yloc>
+    </GUI>
+  </transform>
+  <transform_error_handling>
+  </transform_error_handling>
+  <attributes/>
+</pipeline>

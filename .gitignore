@@ -1,0 +1,14 @@
+# Ignorar logs y temporales
+*.log
+*.tmp
+execution_results/
+
+# Ignorar configuraciones generadas por el servidor
+hop-server.xml
+
+# Ignorar sistema operativo
+Thumbs.db
+Desktop.ini
+
+# (Opcional) Si tienes credenciales en archivos aparte, agrégalos aquí
+# secrets.json

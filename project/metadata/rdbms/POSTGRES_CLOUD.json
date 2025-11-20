@@ -1,0 +1,27 @@
+{
+  "virtualPath": "",
+  "rdbms": {
+    "POSTGRESQL": {
+      "databaseName": "arbt_datamart_joli",
+      "pluginId": "POSTGRESQL",
+      "accessType": 0,
+      "hostname": "pg-int.jolifoods.co",
+      "password": "Encrypted 37636956563962367261514546696b52346f647a66524266616247694b347062637646576e5a4a41507a5558747a554d6d6a4a7036504a344b5850504363705532486133546b5462566dc4d59dbf3ede86858a1da855f087aadf",
+      "pluginName": "PostgreSQL",
+      "port": "5432",
+      "attributes": {
+        "SUPPORTS_TIMESTAMP_DATA_TYPE": "Y",
+        "QUOTE_ALL_FIELDS": "Y",
+        "SUPPORTS_BOOLEAN_DATA_TYPE": "Y",
+        "FORCE_IDENTIFIERS_TO_LOWERCASE": "N",
+        "PRESERVE_RESERVED_WORD_CASE": "Y",
+        "SQL_CONNECT": "",
+        "FORCE_IDENTIFIERS_TO_UPPERCASE": "N",
+        "PREFERRED_SCHEMA_NAME": ""
+      },
+      "manualUrl": "",
+      "username": "arbt_user_01"
+    }
+  },
+  "name": "POSTGRES_CLOUD"
+}

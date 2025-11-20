@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  hop-server:
+    image: apache/hop:2.10.0
+    container_name: joli_hop_server
+    hostname: hop-server
+    ports:
+      - "8080:8080"
+    environment:
+      - HOP_SERVER_USER=cluster
+      - HOP_SERVER_PASSWORD=cluster
+      - HOP_PROJECT=JoliDataHub
+      - HOP_PROJECT_FOLDER=/files/project
+      - HOP_OPTIONS=-Xmx4096m
+    volumes:
+      - ./project:/files/project
+      - ./drivers:/opt/hop/lib/jdbc
