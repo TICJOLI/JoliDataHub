@@ -13,25 +13,6 @@
     </parameters>
   <actions>
     <action>
-      <name>Start</name>
-      <description/>
-      <type>SPECIAL</type>
-      <attributes/>
-      <DayOfMonth>1</DayOfMonth>
-      <doNotWaitOnFirstExecution>N</doNotWaitOnFirstExecution>
-      <hour>12</hour>
-      <intervalMinutes>15</intervalMinutes>
-      <intervalSeconds>0</intervalSeconds>
-      <minutes>0</minutes>
-      <repeat>Y</repeat>
-      <schedulerType>1</schedulerType>
-      <weekDay>1</weekDay>
-      <parallel>N</parallel>
-      <xloc>304</xloc>
-      <yloc>240</yloc>
-      <attributes_hac/>
-    </action>
-    <action>
       <name>WF_UPDATE_DM.hwf</name>
       <description/>
       <type>WORKFLOW</type>
@@ -41,8 +22,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/Incremental/DATOS MAESTROS/WF_UPDATE_DM.hwf</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -67,8 +46,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/Incremental/ORIN/WF_UPDATE_ORIN_RIN1.hwf</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -93,8 +70,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/Incremental/ORDN/WF_UPDATE_ORDN_RDN1.hwf</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -119,8 +94,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/Incremental/ORCT/WF_UPDATE_ORCT.hwf</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -145,8 +118,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/Incremental/ODLN/WF_UPDATE_ODLN_DLN1.hwf</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -171,8 +142,6 @@
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
       <filename>${PROJECT_HOME}/Incremental/ACR1/WF_UPDATE_ACR1.hwf</filename>
-      <logext/>
-      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -187,15 +156,27 @@
       <yloc>496</yloc>
       <attributes_hac/>
     </action>
+    <action>
+      <name>Start 2</name>
+      <description/>
+      <type>SPECIAL</type>
+      <attributes/>
+      <DayOfMonth>1</DayOfMonth>
+      <doNotWaitOnFirstExecution>N</doNotWaitOnFirstExecution>
+      <hour>12</hour>
+      <intervalMinutes>60</intervalMinutes>
+      <intervalSeconds>0</intervalSeconds>
+      <minutes>0</minutes>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <weekDay>1</weekDay>
+      <parallel>N</parallel>
+      <xloc>320</xloc>
+      <yloc>240</yloc>
+      <attributes_hac/>
+    </action>
   </actions>
   <hops>
-    <hop>
-      <from>Start</from>
-      <to>WF_UPDATE_DM.hwf</to>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
     <hop>
       <from>WF_UPDATE_DM.hwf</from>
       <to>WF_UPDATE_ORIN_RIN1.hwf</to>
@@ -230,6 +211,13 @@
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start 2</from>
+      <to>WF_UPDATE_DM.hwf</to>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
   </hops>
   <notepads>
