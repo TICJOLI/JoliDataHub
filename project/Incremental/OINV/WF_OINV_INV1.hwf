@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workflow>
-  <name>WF_OINV</name>
+  <name>WF_OINV_INV1</name>
   <name_sync_with_filename>Y</name_sync_with_filename>
   <description/>
   <extended_description/>
@@ -42,7 +42,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/OINV/GET_LAST_UPDATE_PG_OINV_INV1.hpl</filename>
+      <filename>${PROJECT_HOME}/Incremental/OINV/GET_LAST_UPDATE_PG_OINV_INV1.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>
@@ -70,9 +70,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/OINV/OINV_INV1_INC.hpl</filename>
-      <logext/>
-      <logfile/>
+      <filename>${PROJECT_HOME}/Incremental/OINV/OINV_INV1_INC.hpl</filename>
       <loglevel>Basic</loglevel>
       <parameters>
         <pass_all_parameters>N</pass_all_parameters>

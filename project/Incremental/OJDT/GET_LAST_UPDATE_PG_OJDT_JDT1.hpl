@@ -42,7 +42,7 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -68,7 +68,7 @@ FROM datahub."JDT1";</sql>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>POSTGRES CLOUD</connection>
+    <connection>POSTGRES_CLOUD</connection>
     <execute_each_row>N</execute_each_row>
     <limit>0</limit>
     <sql>SELECT TO_CHAR(
@@ -121,7 +121,6 @@ FROM datahub."OJDT";</sql>
     </partitioning>
     <fields>
       <field>
-        <default_value/>
         <field_name>ultima_fecha_ojdt</field_name>
         <variable_name>ULTIMA_FECHA_OJDT</variable_name>
         <variable_type>ROOT_WORKFLOW</variable_type>

@@ -42,7 +42,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/OJDT/GET_LAST_UPDATE_PG_OJDT_JDT1.hpl</filename>
+      <filename>${PROJECT_HOME}/Incremental/OJDT/GET_LAST_UPDATE_PG_OJDT_JDT1.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>
@@ -70,7 +70,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/OJDT/OJDT_JDT1_INC.hpl</filename>
+      <filename>${PROJECT_HOME}/Incremental/OJDT/OJDT_JDT1_INC.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>

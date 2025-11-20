@@ -13,25 +13,6 @@
     </parameters>
   <actions>
     <action>
-      <name>Start</name>
-      <description/>
-      <type>SPECIAL</type>
-      <attributes/>
-      <DayOfMonth>1</DayOfMonth>
-      <doNotWaitOnFirstExecution>N</doNotWaitOnFirstExecution>
-      <hour>12</hour>
-      <intervalMinutes>15</intervalMinutes>
-      <intervalSeconds>0</intervalSeconds>
-      <minutes>0</minutes>
-      <repeat>Y</repeat>
-      <schedulerType>1</schedulerType>
-      <weekDay>1</weekDay>
-      <parallel>N</parallel>
-      <xloc>304</xloc>
-      <yloc>240</yloc>
-      <attributes_hac/>
-    </action>
-    <action>
       <name>WF_OINV_INV1.hwf</name>
       <description/>
       <type>WORKFLOW</type>
@@ -40,7 +21,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/OINV/WF_OINV_INV1.hwf</filename>
+      <filename>${PROJECT_HOME}/Incremental/OINV/WF_OINV_INV1.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -64,7 +47,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/OJDT/WF_OJDT_JDT1.hwf</filename>
+      <filename>${PROJECT_HOME}/Incremental/OJDT/WF_OJDT_JDT1.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -88,7 +73,9 @@
       <add_time>N</add_time>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/Server/Incremental/OINM/WF_UPDATE_OINM.hwf</filename>
+      <filename>${PROJECT_HOME}/Incremental/OINM/WF_UPDATE_OINM.hwf</filename>
+      <logext/>
+      <logfile/>
       <loglevel>Nothing</loglevel>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
@@ -103,21 +90,40 @@
       <yloc>352</yloc>
       <attributes_hac/>
     </action>
+    <action>
+      <name>Start</name>
+      <description/>
+      <type>SPECIAL</type>
+      <attributes/>
+      <DayOfMonth>1</DayOfMonth>
+      <doNotWaitOnFirstExecution>N</doNotWaitOnFirstExecution>
+      <hour>12</hour>
+      <intervalMinutes>60</intervalMinutes>
+      <intervalSeconds>0</intervalSeconds>
+      <minutes>0</minutes>
+      <repeat>N</repeat>
+      <schedulerType>0</schedulerType>
+      <weekDay>1</weekDay>
+      <parallel>N</parallel>
+      <xloc>352</xloc>
+      <yloc>240</yloc>
+      <attributes_hac/>
+    </action>
   </actions>
   <hops>
-    <hop>
-      <from>Start</from>
-      <to>WF_OINV_INV1.hwf</to>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>Y</unconditional>
-    </hop>
     <hop>
       <from>WF_OINV_INV1.hwf</from>
       <to>WF_OJDT_JDT1.hwf</to>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Start</from>
+      <to>WF_OINV_INV1.hwf</to>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>Y</unconditional>
     </hop>
     <hop>
       <from>Start</from>
