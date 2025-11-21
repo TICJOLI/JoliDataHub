@@ -10,7 +10,7 @@ services:
     
     environment:
       - HOP_SERVER_USER=joli_etl_master
-      - HOP_SERVER_PASSWORD=J0l1_D4t4_HUb_2025!
+      - HOP_SERVER_PASSWORD=J0l1D4t4HUb2025
       - HOP_PROJECT=JoliDataHub
       - HOP_PROJECT_FOLDER=/files/project
       - HOP_OPTIONS=-Xmx2048m
@@ -18,5 +18,5 @@ services:
     volumes:
       - ./project:/files/project
       - ./drivers:/opt/hop/lib/jdbc
-      
+
     restart: unless-stopped
