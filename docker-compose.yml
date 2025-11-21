@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   hop-server:
-    image: apache/hop:2.10.0
+    image: apache/hop:latest
     container_name: joli_hop_server
     hostname: hop-server
     ports:
