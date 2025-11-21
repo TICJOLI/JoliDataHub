@@ -42,7 +42,7 @@
       <clear_rows>N</clear_rows>
       <create_parent_folder>N</create_parent_folder>
       <exec_per_row>N</exec_per_row>
-      <filename>${PROJECT_HOME}/FULL_2/FULL_2.hpl</filename>
+      <filename>${PROJECT_HOME}/Full_2/FULL_2.hpl</filename>
       <logext/>
       <logfile/>
       <loglevel>Basic</loglevel>
