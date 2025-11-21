@@ -1,5 +1,4 @@
 version: "3.8"
-
 services:
   hop-server:
     image: apache/hop:2.10.0
@@ -9,14 +8,23 @@ services:
       - "5678:8080"
     
     environment:
+      
       - HOP_SERVER_USER=cluster
-      - HOP_SERVER_PASSWORD=J0l1D4t4HUb2025
+      - HOP_SERVER_PASSWORD=cluster
+    
       - HOP_PROJECT=JoliDataHub
       - HOP_PROJECT_FOLDER=/files/project
       - HOP_OPTIONS=-Xmx2048m
     
+    
+    command: >
+      /bin/bash -c "
+      /opt/hop/hop-conf.sh -pd -p JoliDataHub || true; 
+      /opt/hop/hop-conf.sh -pc -p JoliDataHub -ph /files/project; 
+      /opt/hop/hop-server.sh -w 8080
+      "
+
     volumes:
       - ./project:/files/project
       - ./drivers:/opt/hop/lib/jdbc
-
     restart: unless-stopped
