@@ -9,7 +9,7 @@ services:
       - "5678:8080"
     
     environment:
-      - HOP_SERVER_USER=joli_etl_master
+      - HOP_SERVER_USER=cluster
       - HOP_SERVER_PASSWORD=J0l1D4t4HUb2025
       - HOP_PROJECT=JoliDataHub
       - HOP_PROJECT_FOLDER=/files/project
