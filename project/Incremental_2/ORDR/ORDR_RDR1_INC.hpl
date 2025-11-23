@@ -22,12 +22,12 @@
   <order>
     <hop>
       <from>GET_ORDR</from>
-      <to>Insert / update</to>
+      <to>Insert / update ORDR</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>GET_RDR1</from>
-      <to>Insert / update 2</to>
+      <to>Insert / update RDR1</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -83,7 +83,7 @@ ORDER BY ORDR.UpdateDate</sql>
     </GUI>
   </transform>
   <transform>
-    <name>Insert / update</name>
+    <name>Insert / update ORDR</name>
     <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
@@ -100,11 +100,13 @@ ORDER BY ORDR.UpdateDate</sql>
         <condition>=</condition>
         <field>DocEntry</field>
         <name>DocEntry</name>
+        <name2/>
       </key>
       <key>
         <condition>=</condition>
         <field>DocNum</field>
         <name>DocNum</name>
+        <name2/>
       </key>
       <schema>datahub</schema>
       <table>ORDR</table>
@@ -3882,7 +3884,7 @@ ORDER BY ORDR.UpdateDate</sql>
     </GUI>
   </transform>
   <transform>
-    <name>Insert / update 2</name>
+    <name>Insert / update RDR1</name>
     <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
