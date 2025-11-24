@@ -22,12 +22,12 @@
   <order>
     <hop>
       <from>GET_OIGN</from>
-      <to>Insert / update</to>
+      <to>Insert / update OIGN</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>GET_IGN1</from>
-      <to>Insert / update 2</to>
+      <to>Insert / update ING1</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -83,7 +83,7 @@ ORDER BY UpdateDate</sql>
     </GUI>
   </transform>
   <transform>
-    <name>Insert / update</name>
+    <name>Insert / update OIGN</name>
     <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
@@ -100,6 +100,7 @@ ORDER BY UpdateDate</sql>
         <condition>=</condition>
         <field>DocEntry</field>
         <name>DocEntry</name>
+        <name2/>
       </key>
       <schema>datahub</schema>
       <table>OIGN</table>
@@ -3877,7 +3878,7 @@ ORDER BY UpdateDate</sql>
     </GUI>
   </transform>
   <transform>
-    <name>Insert / update 2</name>
+    <name>Insert / update ING1</name>
     <type>InsertUpdate</type>
     <description/>
     <distribute>Y</distribute>
@@ -3903,7 +3904,7 @@ ORDER BY UpdateDate</sql>
         <name2/>
       </key>
       <schema>datahub</schema>
-      <table>WTR1</table>
+      <table>IGN1</table>
       <value>
         <name>DocEntry</name>
         <rename>DocEntry</rename>

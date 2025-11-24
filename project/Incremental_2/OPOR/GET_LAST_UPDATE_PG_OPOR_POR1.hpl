@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pipeline>
   <info>
-    <name>GET_LAST_UPDATE_PG_ORIN_RIN1</name>
+    <name>GET_LAST_UPDATE_PG_OPOR_POR1</name>
     <name_sync_with_filename>Y</name_sync_with_filename>
     <description/>
     <extended_description/>
@@ -22,7 +22,7 @@
   <order>
     <hop>
       <from>GET_LAST_UPDATE_OPOR</from>
-      <to>ULTIMA_FECHA_ORIN</to>
+      <to>ULTIMA_FECHA_OPOR</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -84,7 +84,7 @@ FROM datahub."POR1";</sql>
     </GUI>
   </transform>
   <transform>
-    <name>ULTIMA_FECHA_ORIN</name>
+    <name>ULTIMA_FECHA_OPOR</name>
     <type>SetVariable</type>
     <description/>
     <distribute>Y</distribute>
@@ -96,6 +96,7 @@ FROM datahub."POR1";</sql>
     </partitioning>
     <fields>
       <field>
+        <default_value/>
         <field_name>ultima_fecha_opor</field_name>
         <variable_name>ULTIMA_FECHA_OPOR</variable_name>
         <variable_type>ROOT_WORKFLOW</variable_type>
@@ -121,7 +122,6 @@ FROM datahub."POR1";</sql>
     </partitioning>
     <fields>
       <field>
-        <default_value/>
         <field_name>ultima_fecha_por1</field_name>
         <variable_name>ULTIMA_FECHA_POR1</variable_name>
         <variable_type>ROOT_WORKFLOW</variable_type>

@@ -26,7 +26,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>GET_LAST_UPDATE_WOR1</from>
+      <from>GET_LAST_UPDATE_IGE1</from>
       <to>ULTIMA_FECHA_IGE1</to>
       <enabled>Y</enabled>
     </hop>
@@ -58,7 +58,7 @@ FROM datahub."OIGE";</sql>
     </GUI>
   </transform>
   <transform>
-    <name>GET_LAST_UPDATE_WOR1</name>
+    <name>GET_LAST_UPDATE_IGE1</name>
     <type>TableInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -96,7 +96,6 @@ FROM datahub."IGE1";</sql>
     </partitioning>
     <fields>
       <field>
-        <default_value/>
         <field_name>ultima_fecha_ige1</field_name>
         <variable_name>ULTIMA_FECHA_IGE1</variable_name>
         <variable_type>ROOT_WORKFLOW</variable_type>
