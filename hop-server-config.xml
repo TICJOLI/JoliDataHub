@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hop-server-config>
+  <hop-server>
+    <name>JoliServer</name>
+    <hostname>0.0.0.0</hostname>
+    <port>8080</port> 
+    <shutdowning>true</shutdowning>
+    <joining>true</joining>
+    <max_log_lines>0</max_log_lines>
+    <max_log_timeout_minutes>0</max_log_timeout_minutes>
+    <object_timeout_minutes>0</object_timeout_minutes>
+  </hop-server>
+  
+  <security>
+    <users>
+      <user>
+        <username>admin_joli</username>
+        <password>8Dtv6wEvGoNwBafRb</password>
+      </user>
+      </users>
+  </security>
+</hop-server-config>

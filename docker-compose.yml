@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   # -------------------------------------------------------
-  # SERVICIO 1: HOP SERVER (El que ya tenías)
+  # SERVICIO 1: HOP SERVER (AHORA SEGURO)
   # -------------------------------------------------------
   hop-server:
     image: apache/hop:latest
@@ -11,26 +11,31 @@ services:
     ports:
       - "5678:8080"
     environment:
-      - HOP_SERVER_USER=cluster
-      - HOP_SERVER_PASSWORD=cluster
+      # NOTA: Borré las variables de USER/PASS porque ahora mandan las del XML
       - HOP_PROJECT=JoliDataHub
-      # Ruta interna clave:
       - HOP_PROJECT_FOLDER=/files/project
       - HOP_OPTIONS=-Xmx2048m
+    
+    # COMANDO ACTUALIZADO:
+    # 1. Configura el proyecto.
+    # 2. Inicia el servidor LEYENDO el archivo de configuración XML (/files/config.xml)
     command: >
       /bin/bash -c "
       /opt/hop/hop-conf.sh -pd -p JoliDataHub || true; 
       /opt/hop/hop-conf.sh -pc -p JoliDataHub -ph /files/project; 
-      /opt/hop/hop-server.sh -w 8080
+      /opt/hop/hop-server.sh /files/config.xml
       "
+      
     volumes:
       # Mapeo físico en el VPS
       - ./project:/files/project
       - ./drivers:/opt/hop/lib/jdbc
+      # CAMBIO CLAVE: Inyectamos el archivo XML de seguridad creado previamente
+      - ./hop-server-config.xml:/files/config.xml
     restart: unless-stopped
 
   # -------------------------------------------------------
-  # SERVICIO 2: HOP WEB (Nuevo - Editor Visual)
+  # SERVICIO 2: HOP WEB (Editor Visual)
   # -------------------------------------------------------
   hop-web:
     image: apache/hop-web:latest
@@ -42,12 +47,12 @@ services:
     environment:
       - HOP_OPTIONS=-Xmx2g
       - HOP_PROJECT_NAME=JoliDataHub
-      # AJUSTE CRÍTICO: Ahora coincide con el server
+      # Coincide con el server
       - HOP_PROJECT_FOLDER=/files/project
     volumes:
-      # AJUSTE CRÍTICO: Mapeamos a la misma ruta profunda que el server
+      # Mapeamos a la misma ruta profunda que el server
       - ./project:/files/project
-      # Compartimos drivers también por si quieres probar conexiones en la web
+      # Compartimos drivers
       - ./drivers:/opt/hop/lib/jdbc
     restart: unless-stopped
 
