@@ -13,15 +13,16 @@ services:
       - HOP_PROJECT_FOLDER=/files/project
     entrypoint: /bin/bash
     command: >
-      -c "echo '--- Configurando JoliDataHub y Alias ---';
+      -c "echo '--- Generando Configuración de Seguridad ---';
+      /opt/hop/hop-conf.sh -s -sn JoliServer -sh 0.0.0.0 -sp 8080 -su admin_joli -spwd 8Dtv6wEvGoNwBafRb;
+      echo '--- Registrando Proyectos ---';
       /opt/hop/hop-conf.sh -pc -p JoliDataHub -ph /files/project;
       /opt/hop/hop-conf.sh -pc -p project1 -ph /files/project;
-      echo '--- Iniciando Servidor Seguro ---';
-      /opt/hop/hop-server.sh /files/config.xml"
+      echo '--- Iniciando Servidor Blindado ---';
+      /opt/hop/hop-server.sh /root/.config/hop/config/hop-server.xml"
     volumes:
       - ./project:/files/project
       - ./drivers:/opt/hop/lib/jdbc
-      - ./hop-server-config.xml:/files/config.xml
     restart: unless-stopped
 
   hop-web:
