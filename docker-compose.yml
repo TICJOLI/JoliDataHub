@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   # -------------------------------------------------------
-  # SERVICIO 1: HOP SERVER (AHORA SEGURO)
+  # SERVICIO 1: HOP SERVER (SEGURO + COMPATIBILIDAD)
   # -------------------------------------------------------
   hop-server:
     image: apache/hop:latest
@@ -11,59 +11,59 @@ services:
     ports:
       - "5678:8080"
     environment:
-      # NOTA: Borré las variables de USER/PASS porque ahora mandan las del XML
+      - HOP_OPTIONS=-Xmx2048m
+      # Estas variables son ignoradas por el entrypoint manual, pero documentan
       - HOP_PROJECT=JoliDataHub
       - HOP_PROJECT_FOLDER=/files/project
-      - HOP_OPTIONS=-Xmx2048m
     
-    # COMANDO ACTUALIZADO:
-    # 1. Configura el proyecto.
-    # 2. Inicia el servidor LEYENDO el archivo de configuración XML (/files/config.xml)
-    command: >
-      /bin/bash -c "
-      /opt/hop/hop-conf.sh -pd -p JoliDataHub || true; 
+    # LOBOTOMÍA + ALIAS
+    entrypoint: /bin/bash
+    
+    command: -c "
+      echo '--- Configurando Entorno ---';
+      # 1. Registramos el proyecto OFICIAL (JoliDataHub)
       /opt/hop/hop-conf.sh -pc -p JoliDataHub -ph /files/project; 
+      
+      # 2. EL TRUCO: Registramos 'project1' apuntando a la MISMA carpeta
+      # Esto engaña a Airflow para que crea que project1 existe
+      /opt/hop/hop-conf.sh -pc -p project1 -ph /files/project; 
+      
+      echo '--- Iniciando Servidor Seguro ---';
+      # Iniciamos leyendo tu XML de seguridad
       /opt/hop/hop-server.sh /files/config.xml
       "
       
     volumes:
-      # Mapeo físico en el VPS
       - ./project:/files/project
       - ./drivers:/opt/hop/lib/jdbc
-      # CAMBIO CLAVE: Inyectamos el archivo XML de seguridad creado previamente
       - ./hop-server-config.xml:/files/config.xml
     restart: unless-stopped
 
   # -------------------------------------------------------
-  # SERVICIO 2: HOP WEB (Editor Visual)
+  # SERVICIO 2: HOP WEB
   # -------------------------------------------------------
   hop-web:
     image: apache/hop-web:latest
     container_name: hop-web-pro
-    # Usamos root para asegurar que pueda editar los archivos
     user: root
     expose:
       - "8080"
     environment:
       - HOP_OPTIONS=-Xmx2g
       - HOP_PROJECT_NAME=JoliDataHub
-      # Coincide con el server
       - HOP_PROJECT_FOLDER=/files/project
     volumes:
-      # Mapeamos a la misma ruta profunda que el server
       - ./project:/files/project
-      # Compartimos drivers
       - ./drivers:/opt/hop/lib/jdbc
     restart: unless-stopped
 
   # -------------------------------------------------------
-  # SERVICIO 3: NGINX (Seguridad para la Web)
+  # SERVICIO 3: NGINX
   # -------------------------------------------------------
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
     ports:
-      # Puerto de entrada seguro
       - "8088:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
