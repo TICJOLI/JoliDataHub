@@ -5,21 +5,47 @@ services:
     image: apache/hop:latest
     container_name: joli_hop_server
     hostname: hop-server
+    # Usamos root para tener permiso de escribir en /tmp y leer archivos
+    user: root
     ports:
       - "5678:8080"
     environment:
       - HOP_OPTIONS=-Xmx2048m
       - HOP_PROJECT=JoliDataHub
       - HOP_PROJECT_FOLDER=/files/project
+    
     entrypoint: /bin/bash
+    
+    # COMANDO ESTRATÉGICO:
+    # 1. Configura proyectos (|| true evita error si ya existen).
+    # 2. Crea el archivo XML de seguridad manualmente usando 'echo'.
+    # 3. Arranca el servidor apuntando a ese archivo temporal.
     command: >
-      -c "echo '--- Generando Configuración de Seguridad ---';
-      /opt/hop/hop-conf.sh -s -sn JoliServer -sh 0.0.0.0 -sp 8080 -su admin_joli -spwd 8Dtv6wEvGoNwBafRb;
-      echo '--- Registrando Proyectos ---';
-      /opt/hop/hop-conf.sh -pc -p JoliDataHub -ph /files/project;
-      /opt/hop/hop-conf.sh -pc -p project1 -ph /files/project;
-      echo '--- Iniciando Servidor Blindado ---';
-      /opt/hop/hop-server.sh /root/.config/hop/config/hop-server.xml"
+      -c "echo '--- 1. Configurando Proyectos ---';
+      /opt/hop/hop-conf.sh -pc -p JoliDataHub -ph /files/project || true;
+      /opt/hop/hop-conf.sh -pc -p project1 -ph /files/project || true;
+      
+      echo '--- 2. Generando XML de Seguridad (Inyectado) ---';
+      echo '<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+      <hop-server-config>
+        <hop-server>
+          <name>JoliServer</name>
+          <hostname>0.0.0.0</hostname>
+          <port>8080</port>
+        </hop-server>
+        <security>
+          <users>
+            <user>
+              <username>admin_joli</username>
+              <password>8Dtv6wEvGoNwBafRb</password>
+            </user>
+          </users>
+        </security>
+      </hop-server-config>' > /tmp/server-config.xml;
+      
+      echo '--- 3. Iniciando Servidor Blindado ---';
+      /opt/hop/hop-server.sh /tmp/server-config.xml"
+      
     volumes:
       - ./project:/files/project
       - ./drivers:/opt/hop/lib/jdbc
