@@ -1,9 +1,6 @@
 version: "3.8"
 
 services:
-  # -------------------------------------------------------
-  # SERVICIO 1: HOP SERVER (SEGURO + COMPATIBILIDAD)
-  # -------------------------------------------------------
   hop-server:
     image: apache/hop:latest
     container_name: joli_hop_server
@@ -12,36 +9,21 @@ services:
       - "5678:8080"
     environment:
       - HOP_OPTIONS=-Xmx2048m
-      # Estas variables son ignoradas por el entrypoint manual, pero documentan
       - HOP_PROJECT=JoliDataHub
       - HOP_PROJECT_FOLDER=/files/project
-    
-    # LOBOTOMÍA + ALIAS
     entrypoint: /bin/bash
-    
-    command: -c "
-      echo '--- Configurando Entorno ---';
-      # 1. Registramos el proyecto OFICIAL (JoliDataHub)
-      /opt/hop/hop-conf.sh -pc -p JoliDataHub -ph /files/project; 
-      
-      # 2. EL TRUCO: Registramos 'project1' apuntando a la MISMA carpeta
-      # Esto engaña a Airflow para que crea que project1 existe
-      /opt/hop/hop-conf.sh -pc -p project1 -ph /files/project; 
-      
+    command: >
+      -c "echo '--- Configurando JoliDataHub y Alias ---';
+      /opt/hop/hop-conf.sh -pc -p JoliDataHub -ph /files/project;
+      /opt/hop/hop-conf.sh -pc -p project1 -ph /files/project;
       echo '--- Iniciando Servidor Seguro ---';
-      # Iniciamos leyendo tu XML de seguridad
-      /opt/hop/hop-server.sh /files/config.xml
-      "
-      
+      /opt/hop/hop-server.sh /files/config.xml"
     volumes:
       - ./project:/files/project
       - ./drivers:/opt/hop/lib/jdbc
       - ./hop-server-config.xml:/files/config.xml
     restart: unless-stopped
 
-  # -------------------------------------------------------
-  # SERVICIO 2: HOP WEB
-  # -------------------------------------------------------
   hop-web:
     image: apache/hop-web:latest
     container_name: hop-web-pro
@@ -57,9 +39,6 @@ services:
       - ./drivers:/opt/hop/lib/jdbc
     restart: unless-stopped
 
-  # -------------------------------------------------------
-  # SERVICIO 3: NGINX
-  # -------------------------------------------------------
   nginx:
     image: nginx:alpine
     container_name: nginx-proxy
